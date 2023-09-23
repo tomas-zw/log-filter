@@ -4,8 +4,10 @@ Search a logfile with 50k entries.
 
 ## Webclient (localhost:1337)
 
+cd to /bthloggen
+
 Start the Webclient and server with
-`docker compose up`
+`docker compose up -d`
 
 ## Cli
 
