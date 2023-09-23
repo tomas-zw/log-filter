@@ -1,0 +1,34 @@
+version: "3"
+networks:
+    dbwebb:
+
+services:
+  server:
+    image: bnbk/bthloggen-server:1.0
+    container_name: "server"
+    ports:
+      - "1337:1337"
+    networks:
+      dbwebb:
+    restart: "always"
+    volumes:
+      - "./data:/data"
+
+  client:
+    image: bnbk/bthloggen-client:1.0
+    container_name: "client"
+    networks:
+      dbwebb:
+    links:
+      - server:server
+
+  webbclient:
+    image: bnbk/bthloggen-webbclient:1.0
+    container_name: "webbclient"
+    ports:
+      - "1338:8080"
+    networks:
+      dbwebb:
+    restart: "always"
+    links:
+      - server:server
